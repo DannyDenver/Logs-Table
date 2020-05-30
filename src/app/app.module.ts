@@ -13,12 +13,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { PopupModalComponent } from './core/popup-modal/popup-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogsComponent,
-    TableLayoutComponent
+    TableLayoutComponent,
+    PopupModalComponent
     ],
   imports: [
     BrowserModule,
@@ -30,9 +33,11 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ],
   providers: [],
+  entryComponents: [PopupModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

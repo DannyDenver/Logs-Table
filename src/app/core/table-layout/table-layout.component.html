@@ -28,24 +28,25 @@
 <br />
 
 
-<div class="mat-elevation-z8" *ngIf="data">
+<div class="mat-elevation-z8" *ngIf="data && columnConfig">
   <table mat-table matSort [dataSource]="data.results" matSort (matSortChange)="onSortChanges($event)">
-    <ng-container *ngFor="let column of columnConfig" [matColumnDef]="column.key">
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column.key">
 
       <ng-container *ngIf="column.sortable">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column.label}} </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column.label}} </th>
       </ng-container>
       <ng-container *ngIf="!column.sortable">
-          <th mat-header-cell *matHeaderCellDef> {{column.label}} </th>
+        <th mat-header-cell *matHeaderCellDef> {{column.label}} </th>
       </ng-container>
 
       <td mat-cell *matCellDef="let row"> {{row[column.key]}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnKeys"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnKeys">
+    <tr mat-row *matRowDef="let row; columns: columnKeys" (click)="openRowDialog(row)">
     </tr>
   </table>
 
-  <mat-paginator (page)="onPageChange($event)" [pageSize]="query.page.size" [pageSizeOptions]="[5, 10, 20, 100]" [length]="data.count"></mat-paginator>
+  <mat-paginator (page)="onPageChange($event)" [pageIndex]="query.page.number - 1" [pageSize]="query.page.size"
+    [pageSizeOptions]="[5, 10, 20, 100]" [length]="data.count"></mat-paginator>
 </div>

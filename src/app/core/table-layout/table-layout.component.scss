@@ -1,0 +1,5 @@
+.mat-row {
+    cursor: pointer;  
+
+    &:nth-child(even){background-color: #ddd;}
+}
