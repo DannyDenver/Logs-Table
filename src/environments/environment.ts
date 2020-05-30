@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  requestLogsUrl: 'https://planocore.planomatic.com/api/v1/code_challenges/request_logs_index',
+  errorLogsUrl: 'https://planocore.planomatic.com/api/v1/code_challenges/error_logs_index'
 };
 
 /*

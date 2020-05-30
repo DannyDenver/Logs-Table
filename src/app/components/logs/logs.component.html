@@ -1,0 +1,8 @@
+<app-table-layout [caption]="'Error Logs'"
+                [columnConfig]='errorTableColumnConfig'
+                [data]="errorLogs" 
+                [query]="errorQuery" 
+                [queryConfig]="errorLogsQueryConfig"
+                (updatedQuery)="updateQuery($event)" ></app-table-layout>
+
+<app-table-layout [caption]="'Request Logs'"></app-table-layout>
