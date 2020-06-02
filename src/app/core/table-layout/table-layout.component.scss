@@ -29,9 +29,13 @@ th.mat-header-cell {
     }
 
     td.mat-cell {
-        padding: 10px;
         display: block;
+        padding: 10px;
         text-align: center;
+    }
+
+    table.mat-table {
+        width: 100%;
     }
 
     ::ng-deep thead {

@@ -17,7 +17,7 @@ export class PopupModalComponent {
     public dialogRef: MatDialogRef<PopupModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PopupData) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  stringify(data) {
+    return JSON.stringify(data);
   }
 }

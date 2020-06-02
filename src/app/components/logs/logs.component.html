@@ -1,7 +1,16 @@
-<app-table-layout [caption]="'Error Logs'"
+<app-table-layout *ngIf="requestLogs" [caption]="'Request Logs'"
+                [columnConfig]='requestTableColumnConfig'
+                [data]="requestLogs"
+                [rowPopupConfig]="requestRowPopupConfig"
+                [query]="requestQuery" 
+                [queryConfig]="requestQueryConfig"
+                (updatedQuery)="updateRequestQuery($event)" ></app-table-layout>
+
+<app-table-layout *ngIf="errorLogs" [caption]="'Error Logs'"
                 [columnConfig]='errorTableColumnConfig'
                 [data]="errorLogs"
                 [rowPopupConfig]="errorRowPopupConfig"
-                [(query)]="errorQuery" 
+                [query]="errorQuery" 
                 [queryConfig]="errorLogsQueryConfig"
                 (updatedQuery)="updateQuery($event)" ></app-table-layout>
+                

@@ -3,11 +3,10 @@
 <div class="row" *ngIf="queryConfig && queryForm" [formGroup]="queryForm">
   <mat-card>
     <mat-form-field>
-      <mat-label>{{queryConfig.search.label}}</mat-label>
-      <mat-select formControlName="searchCriteria">
-          <mat-option>None</mat-option>
-        <mat-option *ngFor="let value of queryConfig.search.attributes" [value]="value">
-          {{value}}
+      <mat-label>Search By</mat-label>
+      <mat-select formControlName="searchCriteria" multiple>
+        <mat-option *ngFor="let value of queryConfig.searchAttributes" [value]="value">
+          {{createLabel(value)}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -16,15 +15,14 @@
       <input matInput formControlName="search">
     </mat-form-field>
     <mat-form-field>
-      <mat-label>{{queryConfig.filter.label}}</mat-label>
+      <mat-label>Filter By</mat-label>
       <mat-select formControlName="filter">
         <mat-option>None</mat-option>
-        <mat-option *ngFor="let value of queryConfig.filter.values" [value]="value">
-          {{value}}
+        <mat-option *ngFor="let value of queryConfig.filterValues" [value]="value">
+          {{createLabel(value) }}
         </mat-option>
       </mat-select>
     </mat-form-field>
-
   </mat-card>
 </div>
 <br />

@@ -1,8 +1,3 @@
-import { TableColumn } from './models/table-column.model';
+import { Query } from "./interfaces/query.interface";
 
-export const errorTable = [
-    new TableColumn('ID', 'id', '15vw', true),
-    new TableColumn('Error', 'error', '60vw', true),
-    new TableColumn('Created At', 'created_at', '15vw', true),
-    new TableColumn('Backtrace', 'backtrace', null, false, false)
-]
+export const defaultQuery: Query = { page: {size:10, number: 1 }, view: 'dashboard_index', count: true };
