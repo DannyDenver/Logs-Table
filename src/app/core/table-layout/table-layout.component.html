@@ -27,8 +27,9 @@
 </div>
 <br />
 
+<app-spinner *ngIf="!data"></app-spinner>
 
-<div class="mat-elevation-z8" *ngIf="data && columnConfig">
+<mat-card *ngIf="data && columnConfig">
   <table mat-table matSort [dataSource]="data.results" matSort (matSortChange)="onSortChanges($event)">
     <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column.key">
 
@@ -40,7 +41,9 @@
         <th mat-header-cell *matHeaderCellDef ngStyle]="{'width' : column.columnWidth }"> {{column.label}} </th>
       </ng-container>
 
-      <td mat-cell *matCellDef="let row"> {{row[column.key]}} </td>
+      <td mat-cell *matCellDef="let row"> 
+        {{ formatValue(row[column.key]) }}
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnKeys"></tr>
@@ -50,4 +53,6 @@
 
   <mat-paginator (page)="onPageChange($event)" [pageIndex]="query.page.number - 1" [pageSize]="query.page.size"
     [pageSizeOptions]="[5, 10, 20, 100]" [length]="data.count"></mat-paginator>
-</div>
+</mat-card>
+
+<br/>

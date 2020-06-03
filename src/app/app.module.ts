@@ -15,13 +15,16 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { PopupModalComponent } from './core/popup-modal/popup-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SpinnerComponent } from './core/spinner/spinner.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogsComponent,
     TableLayoutComponent,
-    PopupModalComponent
+    PopupModalComponent,
+    SpinnerComponent
     ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSortModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [DatePipe],
   entryComponents: [PopupModalComponent],
   bootstrap: [AppComponent]
 })

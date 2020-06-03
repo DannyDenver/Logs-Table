@@ -36,20 +36,20 @@ export class LogsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.errorQuery = defaultQuery;
-
-    this.errorQuerySubject = new BehaviorSubject<Query>(this.errorQuery);
-
-    this.errorQuerySubject.pipe(switchMap((query: Query) => this.logsService.getErrorLogs(query))).subscribe(errorLogs => {
-      this.errorLogs = errorLogs;
-    });
-    
     this.requestQuery = defaultQuery;
 
+    this.errorQuerySubject = new BehaviorSubject<Query>(this.errorQuery);
     this.requestQuerySubject = new BehaviorSubject<Query>(this.requestQuery);
 
-    this.requestQuerySubject.pipe(switchMap((query: Query) => this.logsService.getRequestLogs(query))).subscribe((requestLogs: RequestLogs) => {
-      this.requestLogs = requestLogs;
-    });   
+    setTimeout(()=>{
+      this.errorQuerySubject.pipe(switchMap((query: Query) => this.logsService.getErrorLogs(query))).subscribe(errorLogs => {
+        this.errorLogs = errorLogs;
+      });
+  
+      this.requestQuerySubject.pipe(switchMap((query: Query) => this.logsService.getRequestLogs(query))).subscribe((requestLogs: RequestLogs) => {
+        this.requestLogs = requestLogs;
+      });  
+    }, 400); 
   };
 
   ngOnDestroy() {

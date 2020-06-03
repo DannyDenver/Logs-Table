@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PopupModalComponent } from '../popup-modal/popup-modal.component';
 import { RowPopupConfig } from 'src/app/models/row-popup-config.model';
 import { Subscription } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-table-layout',
@@ -33,7 +34,7 @@ export class TableLayoutComponent implements OnInit, OnDestroy {
   get displayedColumns() { return this.columnConfig.filter(x => x.isDisplayed) }
   get columnKeys() { return this.displayedColumns.map(x => x.key) };
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog, ) { }
+  constructor(private fb: FormBuilder, public dialog: MatDialog, private datePipe: DatePipe) { }
 
   ngOnInit() {
       this.queryForm = this.fb.group({
@@ -115,6 +116,14 @@ export class TableLayoutComponent implements OnInit, OnDestroy {
   createLabel(text: string): string {
     let words = text.split('_');
     return  words.map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+  }
+
+  formatValue(text: any) {
+    if(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/.test(text)) {
+      return this.datePipe.transform(text, 'medium');
+    }else {
+      return text;
+    }
   }
 
   openRowDialog(data): void {
