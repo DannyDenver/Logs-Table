@@ -1,9 +1,9 @@
 export class QueryConfig {
     constructor(searchAttributes: string[], filterValues: string[]) {
         this.searchAttributes = searchAttributes;
-        this.filterValues = filterValues
+        this.filterValues = filterValues;
     }
-    
+
     searchAttributes: string[];
     filterValues: string[];
 }

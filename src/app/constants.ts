@@ -1,3 +1,3 @@
-import { Query } from "./interfaces/query.interface";
+import { Query } from './interfaces/query.interface';
 
-export const defaultQuery: Query = { page: {size:10, number: 1 }, view: 'dashboard_index', count: true };
+export const defaultQuery: Query = { page: {size: 10, number: 1 }, view: "dashboard_index", count: true };

@@ -7,7 +7,7 @@ export interface Query {
     };
     filters?: string[];
     page: {
-        size: Number;
+        size: number;
         number: number;
     };
     sort?: {

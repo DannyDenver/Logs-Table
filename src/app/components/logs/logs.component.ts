@@ -27,8 +27,8 @@ export class LogsComponent implements OnInit, OnDestroy {
 
   requestLogs: RequestLogs;
   requestQuery: Query;
-  requestQueryConfig = new QueryConfig(['service', 'version', 'action', 'result'],['successful', 'this_week']);
-  requestRowPopupConfig = new RowPopupConfig('params', 'Parameters'); 
+  requestQueryConfig = new QueryConfig(['service', 'version', 'action', 'result'], ['successful', 'this_week']);
+  requestRowPopupConfig = new RowPopupConfig('params', 'Parameters');
   requestQuerySubject: BehaviorSubject<Query>;
   requestTableColumnConfig = tableConfigurations.requestTable;
 
@@ -41,29 +41,31 @@ export class LogsComponent implements OnInit, OnDestroy {
     this.errorQuerySubject = new BehaviorSubject<Query>(this.errorQuery);
     this.requestQuerySubject = new BehaviorSubject<Query>(this.requestQuery);
 
-    setTimeout(()=>{
-      this.errorQuerySubject.pipe(switchMap((query: Query) => this.logsService.getErrorLogs(query))).subscribe(errorLogs => {
-        this.errorLogs = errorLogs;
-      });
-  
-      this.requestQuerySubject.pipe(switchMap((query: Query) => this.logsService.getRequestLogs(query))).subscribe((requestLogs: RequestLogs) => {
-        this.requestLogs = requestLogs;
-      });  
-    }, 400); 
-  };
+    setTimeout(() => {
+      this.errorQuerySubject.pipe(switchMap((query: Query) => this.logsService.getErrorLogs(query)))
+        .subscribe(errorLogs => {
+          this.errorLogs = errorLogs;
+        });
+
+      this.requestQuerySubject.pipe(switchMap((query: Query) => this.logsService.getRequestLogs(query)))
+        .subscribe((requestLogs: RequestLogs) => {
+          this.requestLogs = requestLogs;
+        });
+    }, 400);
+  }
 
   ngOnDestroy() {
     this.requestQuerySubject.unsubscribe();
     this.errorQuerySubject.unsubscribe();
   }
-  
+
   updateQuery(query: Query) {
     this.errorQuery = query;
     this.errorQuerySubject.next(query);
-  };
+  }
 
   updateRequestQuery(query: Query) {
     this.requestQuery = query;
     this.requestQuerySubject.next(query);
-  };
-};
+  }
+}

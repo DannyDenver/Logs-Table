@@ -10,5 +10,5 @@ export class RequestLog {
     action: string;
     result: string;
     params: any;
-    created_at: Date
+    created_at: Date;
 }

@@ -14,4 +14,4 @@ export const requestTable  = [
     new TableColumn('Result', 'result', '20vw', true),
     new TableColumn('Created At', 'created_at', '20vw', true),
     new TableColumn('Params', 'params', null, false, false)
-]
+];
