@@ -1,4 +1,4 @@
-<h1>{{ caption }}</h1>
+<h2>{{ caption }}</h2>
 
 <div class="row" *ngIf="queryConfig && queryForm" [formGroup]="queryForm">
   <mat-card>
@@ -50,9 +50,7 @@
     <tr mat-row *matRowDef="let row; columns: columnKeys" (click)="openRowDialog(row)">
     </tr>
   </table>
-
-  <mat-paginator (page)="onPageChange($event)" [pageIndex]="query.page.number - 1" [pageSize]="query.page.size"
-    [pageSizeOptions]="[5, 10, 20, 100]" [length]="data.count"></mat-paginator>
 </mat-card>
-
+<mat-paginator #paginator (page)="onPageChange($event)" [pageIndex]="query.page.number - 1" [(pageSize)]="query.page.size"
+[pageSizeOptions]="[5, 10, 20, 100]" [length]="data ? data.count : 0"></mat-paginator>
 <br/>

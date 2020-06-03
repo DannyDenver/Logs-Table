@@ -1,0 +1,4 @@
+<app-table-layout [caption]="'Request Logs'" [columnConfig]='requestTableColumnConfig' [data]="requestLogs"
+    [rowPopupConfig]="requestRowPopupConfig" [(query)]="requestQuery" [queryConfig]="requestQueryConfig"
+    (updatedQuery)="updateRequestLogQuery($event)">
+</app-table-layout>

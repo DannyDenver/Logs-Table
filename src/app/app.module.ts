@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { LogsComponent } from './components/logs/logs.component';
 import { TableLayoutComponent } from './core/table-layout/table-layout.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
@@ -17,14 +16,20 @@ import { PopupModalComponent } from './core/popup-modal/popup-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SpinnerComponent } from './core/spinner/spinner.component';
 import { DatePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { ErrorLogsComponent } from './components/error-logs/error-logs.component';
+import { RequestLogsComponent } from './components/request-logs/request-logs.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogsComponent,
     TableLayoutComponent,
     PopupModalComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ErrorLogsComponent,
+    RequestLogsComponent
     ],
   imports: [
     BrowserModule,
@@ -37,7 +42,9 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [DatePipe],
   entryComponents: [PopupModalComponent],
